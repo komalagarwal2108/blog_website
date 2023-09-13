@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.about {
+  background: linear-gradient(180deg,  rgb(221, 223, 219),rgb(147, 203, 128));
+  height: 95vh;
+  position: relative;
+  display: flex;
+}
+
+.about-content {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  width: 50vw;
+  height: 40vh;
+  margin: 0px auto;
+  /* justify-content: center; */
+  align-self: center;
+  border-radius: 15px;
+  padding: 20px;
+  font-family: "Varela Round", sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: center;
+}
+
+.about-content span {
+  font-size: 30px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 47px;
+  line-height: 1;
+  
+}
