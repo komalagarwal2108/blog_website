@@ -48,7 +48,7 @@ export default function Topbar() {
             {user.profilepic ? (
               <img className="topImg" src={PF + user.profilepic} alt="" />
             ) : (
-              <img className="topImg" src={profilePic} />
+              <img className="topImg" src={profilePic} alt="" />
             )}
           </Link>
         ) : (

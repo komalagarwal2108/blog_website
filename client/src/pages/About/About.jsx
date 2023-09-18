@@ -1,4 +1,3 @@
-import Header from "../../components/header/Header";
 import "./about.css";
 
 export default function About() {

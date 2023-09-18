@@ -1,5 +1,4 @@
 import "./write.css";
-import writeImg from "../../asset/img/postimage.jpg";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";

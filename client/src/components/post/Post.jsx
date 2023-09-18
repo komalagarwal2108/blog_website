@@ -1,5 +1,4 @@
 import "./post.css";
-import PostImg from "../../asset/img/postimage.jpg";
 import {Link} from "react-router-dom"
 
 export default function Post({ post }) {

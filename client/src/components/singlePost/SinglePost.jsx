@@ -1,7 +1,6 @@
 import "./singlePost.css";
 import { useLocation } from "react-router";
 import { useContext, useEffect, useState } from "react";
-import postImg from "../../asset/img/postimage.jpg";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
