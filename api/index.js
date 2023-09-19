@@ -43,7 +43,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
 app.use("/api/categories", catRoute);
-app.use(cors());
+app.use(cors(corsOptions));
 
 const port = 5000;
 app.listen(port, () => {
