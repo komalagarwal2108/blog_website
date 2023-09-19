@@ -13,6 +13,8 @@ const catRoute = require("./routes/categories");
 dotenv.config();
 const corsOptions = {
   origin: 'https://65096e3165288e000766b6bb--incredible-macaron-e82056.netlify.app/',
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
 };
 app.use(express.json()); //to enable sending json object
 app.use("/images",express.static(path.join(__dirname,"/images")))
@@ -41,7 +43,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
 app.use("/api/categories", catRoute);
-app.use(cors(corsOptions));
+app.use(cors());
 
 const port = 5000;
 app.listen(port, () => {
