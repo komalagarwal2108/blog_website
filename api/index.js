@@ -17,7 +17,7 @@ const corsOptions = {
   // methods: ["GET", "POST", "PUT", "DELETE"],
   // allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions));
+
 app.use(express.json()); //to enable sending json object
 app.use("/images", express.static(path.join(__dirname, "/images")));
 mongoose
@@ -41,6 +41,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
+app.use(cors(corsOptions));
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
