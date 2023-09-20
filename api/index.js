@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+const cors = require("express-cors");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
