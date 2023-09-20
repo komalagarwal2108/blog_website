@@ -14,6 +14,7 @@ export default function Settings() {
   const [success, setSuccess] = useState(false);
 
   const PF="http://localhost:5000/images/";
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,11 +33,11 @@ export default function Settings() {
       updatedUser.profilepic = filename;
       console.log(filename);
       try {
-        await axios.post("/upload", data);
+        await axios.post(backendURL+"/upload", data);
       } catch (err) {}
     }
     try {
-      const res=await axios.put("/users/" + user._id, updatedUser);
+      const res=await axios.put(backendURL+"/users/" + user._id, updatedUser);
       
       setSuccess(true);
       dispatch({type:"UPDATE_SUCCESS", payload: res.data})

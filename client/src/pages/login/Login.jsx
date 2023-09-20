@@ -10,13 +10,15 @@ export default function Login() {
   const passwordRef = useRef();
   const {dispatch,isFetching} = useContext(Context);
 
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
+
   const handleSubmit= async (e)=>{
     e.preventDefault();
     setError(false);
     dispatch({type:"LOGIN_START"});   //on clicking the button this state starts
 
     try{
-      const res= await axios.post("/auth/login",{
+      const res= await axios.post(backendURL+"/auth/login",{
         username: userRef.current.value,
         password: passwordRef.current.value,
       })

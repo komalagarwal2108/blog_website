@@ -1,10 +1,10 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const multer = require("multer");
-const path =require ("path")
+const path = require("path");
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
 const postsRoute = require("./routes/posts");
@@ -12,12 +12,14 @@ const catRoute = require("./routes/categories");
 
 dotenv.config();
 const corsOptions = {
-  origin: 'https://65096e3165288e000766b6bb--incredible-macaron-e82056.netlify.app/',
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
+  origin:
+    "https://65096e3165288e000766b6bb--incredible-macaron-e82056.netlify.app/",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
+app.use(cors(corsOptions));
 app.use(express.json()); //to enable sending json object
-app.use("/images",express.static(path.join(__dirname,"/images")))
+app.use("/images", express.static(path.join(__dirname, "/images")));
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -43,7 +45,6 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);
 app.use("/api/categories", catRoute);
-app.use(cors(corsOptions));
 
 const port = 5000;
 app.listen(port, () => {

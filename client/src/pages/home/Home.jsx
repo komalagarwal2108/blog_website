@@ -12,15 +12,16 @@ export default function Home() {
 
   const [posts, setPosts] = useState([]);
   const {search} = useLocation();
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   
 
   useEffect(() => {
     const fetchPosts = async ()=>{
-      const res= await axios.get("https://my-blogging-website.onrender.com/api/posts" + search);
+      const res= await axios.get(backendURL+"/posts" + search);
       setPosts(res.data);
     }
     fetchPosts()
-  },[search])
+  },[search,backendURL])    //may cause error
 
   return (
     <>

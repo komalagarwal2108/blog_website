@@ -15,6 +15,7 @@ export default function SinglePost() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const getPost = async () => {
@@ -28,16 +29,16 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`, {
+      await axios.delete(backendURL+`/posts/${post._id}`, {
         data: { username: user.username },
       });
-      window.location.replace("/");
+      window.location.replace(backendURL+"/");
     } catch (err) {}
   };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axios.put(backendURL+`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,

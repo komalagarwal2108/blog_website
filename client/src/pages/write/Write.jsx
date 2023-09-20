@@ -10,6 +10,8 @@ export default function Write() {
   const [category, setCategory] = useState("");
   const { user } = useContext(Context);
 
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const categories = category.split(" ");
@@ -33,20 +35,20 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
+        await axios.post(backendURL +"/upload", data);
       } catch (err) {}
     }
 
     for (let c in cats) {
       console.log("inside for " + cats[c]);
       try {
-        await axios.post("/categories", cats[c]);
+        await axios.post(backendURL +"/categories", cats[c]);
       } catch (err) {}
     }
 
     try {
-      const res = await axios.post("/posts", newPost);
-      window.location.replace("/post/" + res.data._id);
+      const res = await axios.post(backendURL +"/posts", newPost);
+      window.location.replace(backendURL +"/post/" + res.data._id);
     } catch (err) {}
   };
 

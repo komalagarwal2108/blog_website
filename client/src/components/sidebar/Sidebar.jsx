@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
+  const backendURL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("https://my-blogging-website.onrender.com/api/categories");
+      const res = await axios.get(backendURL+"/categories");
       setCats(res.data);
     };
     getCats();
