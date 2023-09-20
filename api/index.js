@@ -13,7 +13,7 @@ const catRoute = require("./routes/categories");
 dotenv.config();
 const corsOptions = {
   origin:
-    "https://65096e3165288e000766b6bb--incredible-macaron-e82056.netlify.app/",
+    "https://incredible-macaron-e82056.netlify.app/",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
