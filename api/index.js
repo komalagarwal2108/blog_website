@@ -14,8 +14,8 @@ dotenv.config();
 const corsOptions = {
   origin:
     "https://incredible-macaron-e82056.netlify.app/",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  // methods: ["GET", "POST", "PUT", "DELETE"],
+  // allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
 app.use(express.json()); //to enable sending json object
