@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("express-cors");
+const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -13,11 +13,11 @@ const catRoute = require("./routes/categories");
 dotenv.config();
 const corsOptions = {
   origin:
-    "https://incredible-macaron-e82056.netlify.app/",
+    "https://incredible-macaron-e82056.netlify.app",
   // methods: ["GET", "POST", "PUT", "DELETE"],
   // allowedHeaders: ["Content-Type", "Authorization"],
 };
-
+app.use(cors(corsOptions));
 app.use(express.json()); //to enable sending json object
 app.use("/images", express.static(path.join(__dirname, "/images")));
 mongoose
@@ -41,7 +41,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
-app.use(cors(corsOptions));
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postsRoute);

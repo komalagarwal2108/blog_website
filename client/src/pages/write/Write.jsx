@@ -11,6 +11,7 @@ export default function Write() {
   const { user } = useContext(Context);
 
   const backendURL = process.env.REACT_APP_BACKEND_URL;
+  console.log(process.env.REACT_APP_BACKEND_URL)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
