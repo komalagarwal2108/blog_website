@@ -49,8 +49,10 @@ export default function Write() {
 
     try {
       const res = await axios.post(backendURL +"/posts", newPost);
-      window.location.replace(backendURL +"/post/" + res.data._id);
-    } catch (err) {}
+      window.location.replace("/post/" + res.data._id);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   return (

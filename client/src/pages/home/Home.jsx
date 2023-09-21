@@ -13,7 +13,6 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const {search} = useLocation();
   const backendURL = process.env.REACT_APP_BACKEND_URL;
-  console.log(backendURL)
 
   useEffect(() => {
     const fetchPosts = async ()=>{

@@ -9,7 +9,7 @@ export default function Sidebar() {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get(backendURL+"/categories");
+      const res = await axios.get(backendURL + "/categories");
       setCats(res.data);
     };
     getCats();
@@ -18,11 +18,11 @@ export default function Sidebar() {
   return (
     <div className="sideBar">
       <div className="sideBarItem">
-        <span className="sideBarTitle">ABOUT ME</span>
+        <span className="sideBarTitle">ABOUT STORY SCRIBE</span>
         <img className="sideBarImg" src={aboutimg} alt="" />
         <p>
-          Lorem ipsum dolor sit amet consect adipisicing elit. Recusandae,
-          modiew. Consequatur ad quod illo ipsam rerum voluptatum.
+          A platform where users can craft compelling narratives that captivate
+          and inspire readers.
         </p>
       </div>
       <div className="sideBarItem">

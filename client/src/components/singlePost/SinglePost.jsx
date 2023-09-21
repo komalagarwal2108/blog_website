@@ -29,21 +29,21 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(backendURL+`/posts/${post._id}`, {
+      await axios.delete(backendURL + `/posts/${post._id}`, {
         data: { username: user.username },
       });
-      window.location.replace(backendURL+"/");
+      window.location.replace("/");
     } catch (err) {}
   };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(backendURL+`/posts/${post._id}`, {
+      await axios.put(backendURL + `/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
       });
-      setUpdateMode(false)
+      setUpdateMode(false);
     } catch (err) {}
   };
 
@@ -63,7 +63,7 @@ export default function SinglePost() {
           />
         ) : (
           <h1 className="singlePostTitle">
-            {title}           
+            {title}
             {post.username === user?.username && (
               <div className="singlePostEdit">
                 <i
@@ -86,6 +86,7 @@ export default function SinglePost() {
               <b>{post.username}</b>
             </Link>
           </span>
+
           <span className="singlePostDate">
             {new Date(post.createdAt).toDateString()}
           </span>
@@ -100,11 +101,11 @@ export default function SinglePost() {
           <p className="singlePostDesc">{desc} </p>
         )}
 
-        {updateMode && 
+        {updateMode && (
           <button className="singlePostButton" onClick={handleUpdate}>
             Update
           </button>
-        }
+        )}
       </div>
     </div>
   );

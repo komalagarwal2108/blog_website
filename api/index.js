@@ -19,7 +19,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json()); //to enable sending json object
-app.use("/images", express.static(path.join(__dirname, "/images")));
+// app.use("/images", express.static(path.join(__dirname, "/images")));
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

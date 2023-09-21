@@ -16,6 +16,8 @@
 
 .sideBarItem > p{
     padding: 30px;
+    text-align: center;
+
 }
 
 .sideBarItem{
@@ -38,6 +40,8 @@
     text-align: center;
 }
 
+
+
 .sideBarList{
     list-style: none;
     margin-bottom: 30px;
@@ -49,6 +53,7 @@
     width: 50%;
     margin: 5px auto;
     cursor: pointer;
+    
 }
 
 .sideBarSocial{
