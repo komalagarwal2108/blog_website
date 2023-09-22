@@ -18,7 +18,7 @@ export default function Register() {
         email,
         password,
       });
-      res.data && window.location.replace(backendURL+"/login")
+      res.data && window.location.replace("/login")
     } catch (err) {
      setError(true);
     }

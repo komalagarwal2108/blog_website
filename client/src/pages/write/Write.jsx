@@ -11,12 +11,10 @@ export default function Write() {
   const { user } = useContext(Context);
 
   const backendURL = process.env.REACT_APP_BACKEND_URL;
-  console.log(process.env.REACT_APP_BACKEND_URL)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const categories = category.split(" ");
-    console.log(categories);
 
     const newPost = {
       username: user.username,
@@ -34,25 +32,30 @@ export default function Write() {
       const filename = Date.now() + file.name; // to make sure that if user uploads file with same name it can be resovled
       data.append("name", filename);
       data.append("file", file);
-      newPost.photo = filename;
       try {
-        await axios.post(backendURL +"/upload", data);
-      } catch (err) {}
+        const imgURL = await axios.post(backendURL + "/upload", data, {
+          headers: {
+            "Content-Type": "multipart/form-data", // Important for file uploads
+          },
+        });
+        newPost.photo = imgURL.data;
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     for (let c in cats) {
-      console.log("inside for " + cats[c]);
       try {
-        await axios.post(backendURL +"/categories", cats[c]);
-      } catch (err) {}
+        await axios.post(backendURL + "/categories", cats[c]);
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     try {
-      const res = await axios.post(backendURL +"/posts", newPost);
+      const res = await axios.post(backendURL + "/posts", newPost);
       window.location.replace("/post/" + res.data._id);
-    } catch (err) {
-      console.log(err)
-    }
+    } catch (err) {}
   };
 
   return (
@@ -61,7 +64,11 @@ export default function Write() {
         <img src={URL.createObjectURL(file)} alt="" className="writeImg" />
       )}
 
-      <form className="writeForm" onSubmit={handleSubmit}>
+      <form
+        className="writeForm"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
             <i className="writeIcon fa-solid fa-plus"></i>
@@ -70,6 +77,7 @@ export default function Write() {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
+            name="file"
             onChange={(e) => setFile(e.target.files[0])}
           />
           <input

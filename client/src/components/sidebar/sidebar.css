@@ -51,8 +51,9 @@
 .sideBarListItem{
     display: inline-block;
     width: 50%;
-    margin: 5px auto;
+    margin: 3px auto;
     cursor: pointer;
+    text-align: center;
     
 }
 

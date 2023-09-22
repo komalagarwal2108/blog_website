@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
-import profilePic from "../../asset/img/nopicuser.jpg"
+import profilePic from "../../asset/img/nopicuser.jpg";
 
 export default function Topbar() {
-  const PF = "http://localhost:5000/images/";
   const { user, dispatch } = useContext(Context);
 
   const handlelogout = () => {
@@ -46,7 +45,7 @@ export default function Topbar() {
         {user ? (
           <Link to={"/settings"}>
             {user.profilepic ? (
-              <img className="topImg" src={PF + user.profilepic} alt="" />
+              <img className="topImg" src={user.profilepic} alt="" />
             ) : (
               <img className="topImg" src={profilePic} alt="" />
             )}
@@ -65,8 +64,6 @@ export default function Topbar() {
             </li>
           </ul>
         )}
-
-        <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
   );

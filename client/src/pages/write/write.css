@@ -62,3 +62,7 @@
     cursor: pointer;
     font-size: 16px;
 }
+
+.writeSubmit::after{
+    cursor: progress;
+}
