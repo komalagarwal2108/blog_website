@@ -15,16 +15,17 @@ export default function SinglePost() {
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
   const backendURL = process.env.REACT_APP_BACKEND_URL;
+  console.log(path);
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axios.get(backendURL + "/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
     };
     getPost();
-  }, [path]);
+  }, [backendURL,path]);
 
   const handleDelete = async () => {
     try {
